@@ -4,8 +4,8 @@
 
 ## TO DO
 - [X] make a basic express app
-- [ ] add a database
-- [ ] add the user model
+- [X] add a database
+- [X] add the user model
 - [ ] add a route for the user model
 - [ ] seed data to view all of the users
 - [ ] allow users to be added 
