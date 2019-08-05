@@ -13,6 +13,8 @@
 - [X] create controllers
 
 ### ROUTES
+
+#### Users
 <table>
     <tr>
         <td>/api/users</td>
