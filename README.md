@@ -8,7 +8,7 @@
 - [X] add the user model
 - [X] seed data to view all of the users
 - [X] add a route for the user model
-- [ ] allow users to be added 
-- [ ] delete user functionality 
-- [ ] update user functionality
+- [X] allow users to be added 
+- [X] delete user functionality 
+- [X] update user functionality
 - [ ] create controllers
