@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
+const apiRouter = require('./src/routes')
 
 require('./src/database')
 
-const apiRouter = require('./src/routes')
+
 app.use('/api', apiRouter)
 
 
