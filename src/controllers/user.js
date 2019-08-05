@@ -8,7 +8,7 @@ const list = (req, res) => {
 const retrieve = (req, res) => {
     user.findAll({
         where: {
-            username: req.params.username
+            id: req.params.username
         }
     })
     .then(user => {
@@ -31,30 +31,47 @@ const create = (req, res) => {
         .catch(error => res.status(400).status(error))
 }
 
-const edit = (req, res) => {
+const update = (req, res) => {
     const id = parseInt(req.params.id)
 
-    models.User.findByPk(id)
+    user.findByPk(id)
+      .then(user => {
+        if (!user) {
+          return res.status(404).send({
+            message: 'User Not Found',
+          });
+        }
+        return user
+          .update({
+            email: req.body.email || user.email,
+          })
+          .then(() => res.status(200).send(user))  // Send back the updated todo.
+          .catch((error) => res.status(400).send(error));
+      })
+      .catch((error) => res.status(400).send(error));
+}
+
+const remove = (req, res) => {
+    const id = parseInt(req.params.id)
+    user.findByPk(id)
         .then(user => {
-            if (!user) {
-                return res.status(404).send({
-                message: 'User Not Found',
-                });
-            }
-            return user
-                .update({ 
-                    email: req.body.email || user.email,
-                    password: req.body.password || user.password,
-                })
-                .then(() => res.status(200).send(user))  
-                .catch((error) => res.status(400).send(error));
-            })
-    .catch((error) => res.status(400).send(error));
+        if (!user) {
+            return res.status(400).send({
+            message: 'User Not Found',
+            });
+        }
+        return user
+            .destroy()
+            .then(() => res.status(204).send())
+            .catch(error => res.status(400).send(error));
+        })
+    .catch(error => res.status(400).send(error));
 }
 
 module.exports = {
     list,
     retrieve,
     create,
-    edit
+    update,
+    remove
 }
