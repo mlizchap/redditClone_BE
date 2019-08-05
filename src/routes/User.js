@@ -39,29 +39,27 @@ const router = Router();
 // })
 
 router.put('/edit/:id', (req, res) => {
-    const id = parseInt(req.params.id)
+    console.log('test')
 
-    models.User.findByPk(id, {
-        include: [{
-          model: User,
-          as: 'todoItems',
-        }],
-      })
-      .then(user => {
-        if (!user) {
-          return res.status(404).send({
-            message: 'User Not Found',
-          });
-        }
-        return user
-          .update({
-            email: req.body.email || user.email,
-          })
-          .then(() => res.status(200).send(user))  // Send back the updated todo.
-          .catch((error) => res.status(400).send(error));
-      })
-      .catch((error) => res.status(400).send(error));
+    // const id = parseInt(req.params.id)
+    // console.log(id)
+    // models.User.findByPk(id)
+    //     console.log(id)
+        // .then(user => {
+        //     if (!user) {
+        //         return res.status(404).send({ message: 'User Not Found' });
+        //     }
+        //     return user
+        //         .update({ 
+        //             email: req.body.email,
+        //             // password: req.body.password || user.password,
+        //         })
+        //         .then(() => res.status(200).send(user))  
+        //         .catch((error) => res.status(400).send(error));
+        //     })
+        // .catch((error) => res.status(400).send(error));
 })
+
 
 router.delete('/:id', (req, res) => {
     const id = parseInt(req.params.id)
