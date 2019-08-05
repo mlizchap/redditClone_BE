@@ -15,30 +15,23 @@
 ### ROUTES
 <table>
     <tr>
+        <td>/api/users</td>
         <td>List all users</td>
-        <td>`/users`</td>
     </tr>
     <tr>
+        <td>/api/users/:username</td>
         <td>List one user</td>
-        <td>`/users/:username`</td>
     </tr>
     <tr>
+        <td>/api/users</td>
         <td>Create new user</td>
-        <td>`/users`</td>
     </tr>
     <tr>
+        <td>/api/users/:id</td>
         <td>Update user info</td>
-        <td>`/users/:id`</td>
     </tr>
     <tr>
+        <td>/api/users/:id</td>
         <td>Delete user</td>
-        <td>`/users/:id`</td>
     </tr>
 </table>
-
-
-router.get('/', userController.list);
-router.get('/:username', userController.retrieve);
-router.post('/', userController.create);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.remove);
