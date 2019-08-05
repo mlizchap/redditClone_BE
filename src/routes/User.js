@@ -21,7 +21,28 @@ router.get('/:username', (req, res) => {
             res.send(user)
         }
     })
-    
 })
+
+router.post('/new', (req, res) => {
+    console.log(req.body.username, req.body.email, req.body.password,)
+    return models.User.create({
+        
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+    })
+
+    // .then(() => User.findOrCreate({
+    //     where: {
+    //         username: req.body.username,
+    //         email: req.body.email,
+    //         password: req.body.password,
+    //     }, 
+    // }))
+    .then(user => res.status(201).send(user))
+    .catch(error => res.status(400).status(error))
+})
+
+
 
 module.exports = router;
