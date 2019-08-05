@@ -8,8 +8,6 @@ const models = {
     User: db.import('./User')
 }
 
-console.log(models, "M")
-
 module.exports = {
     db,
     models

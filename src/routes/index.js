@@ -1,9 +1,7 @@
-const Router = require('express').Router
-const models = require('../models').models;
+const Router = require('express')
+const userRouter = require('./User')
 
-const router = Router();
+let apiRouter = Router()
+    .use('/users', userRouter)
 
-router.get('/user/all', (req, res) => {
-    models.User.findAll({})
-        .then(user => res.send(user))
-})
+module.exports = apiRouter
